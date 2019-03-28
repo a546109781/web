@@ -1,6 +1,5 @@
 package cc.nanjo.common.util;
 
-import com.alibaba.fastjson.JSONObject;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import javax.crypto.Cipher;
@@ -58,19 +57,5 @@ public class AESUtil {
             System.out.println(ex.toString());
             return null;
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        /*
-         * 此处使用AES-128-ECB加密模式，key需要为16位。
-         */
-        String sKey = "AmCILBEADCgkHhDK";
-        // 需要加密的字串
-        JSONObject object = new JSONObject();
-        object.put("orderNo", "111");
-        String encrypt = Encrypt(object.toJSONString(), sKey);
-        System.out.println("加密:" + encrypt);
-
-
     }
 }

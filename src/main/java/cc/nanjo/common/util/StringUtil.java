@@ -370,17 +370,6 @@ public class StringUtil {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        // System.out.println(randomStr2Ascii(3));
-        // System.out.println(randomStr2Ascii(16));
-        // System.out.println(randomStr2Ascii(8));
-        // System.out.println(generalStringToAscii(3));
-        // System.out.println(generalStringToAscii(16));
-        // System.out.println(generalStringToAscii(8));
-
-        System.out.println(isPhoneValid(" 13659804123".trim()));
-    }
-
     /**
      * 补位
      *
@@ -624,9 +613,9 @@ public class StringUtil {
      * if(b1<b2&&e1<e2&&e1>b2) 情况二：【b2---(b1---e2】----e1) if(b1>b2&&b1<e2&&e2<e1) 3.包含：计算较短的时间段日期长度。
      * （b1---【b2-----e2】--e1） if(b1<b2&&e1>e2) 【b2---（b1-----e1）--e2】 if(b1>b2&&e1<e2)
      *
-     * @param begindate1 开始日期
-     * @param enddate1   结束日期
-     * @param enddate2   结束日期
+     * @param begindate1     开始日期
+     * @param enddate1       结束日期
+     * @param enddate2       结束日期
      * @return
      */
     public static String getDayCoincidence(Date begindate1, Date enddate1, Date begindate2, Date enddate2) {
