@@ -1,11 +1,11 @@
-package ${package}import com.baomidou.dynamic.datasource.annotation.DS;
-import org.springframework.stereotype.Service;
+package ${package}.service.impl;
 
-.service.impl;
-    ${package}
-        .entity.${className};
-    ${package}
-        .service.${className}Service; ${package}.mapper.${className}Mapper;
+import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.dynamic.datasource.annotation.DS;
+import ${package}.entity.${className};
+import ${package}.service.${className}Service;
+import ${package}.mapper.${className}Mapper;
 
 /**
  * Module: ${className}.java

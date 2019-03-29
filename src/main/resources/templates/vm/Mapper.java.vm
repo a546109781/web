@@ -1,8 +1,8 @@
-package ${package}import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+package ${package}.mapper;
 
-.mapper;
-    ${package}
-        .entity.${className};
+import ${package}.entity.${className};
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * Module: ${className}.java

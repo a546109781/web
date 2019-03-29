@@ -1,8 +1,7 @@
-package ${package}import com.baomidou.mybatisplus.extension.service.IService;
+package ${package}.service;
 
-.service;
-    ${package}
-        .entity.${className};
+import ${package}.entity.${className};
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * Module: ${className}.java
