@@ -3,7 +3,6 @@ package cc.nanjo.web.index;
 import cc.nanjo.web.base.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,9 +15,9 @@ public class MainController extends BaseController {
 
 
     @RequestMapping("/")
-    public String main(HttpServletRequest request, ModelAndView modelAndView) {
+    public String main(HttpServletRequest request) {
 
-        return "hello world";
+        return "main/index";
     }
 
 }

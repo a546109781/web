@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    dynamic:
+      datasource:
+        master:
+          username: root
+          password: 123456
+          url: jdbc:mysql://localhost:3306/web?autoReconnect=true&useUnicode=true&zeroDateTimeBehavior=convertToNull&useServerPrepStmts=false&rewriteBatchedStatements=true&serverTimezone=GMT%2B8
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          druid: #这里可以重写默认值
+            initial-size: 5
+            max-active: 32
+            max-wait: 60000
+            min-idle: 4
+server:
+  #服务端口
+  port: 80
+  servlet:
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值25
+    min-spare-threads: 30
