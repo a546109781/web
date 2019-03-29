@@ -12,6 +12,10 @@ spring:
             max-active: 32
             max-wait: 60000
             min-idle: 4
+  thymeleaf:
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    cache: false
 server:
   #服务端口
   port: 80

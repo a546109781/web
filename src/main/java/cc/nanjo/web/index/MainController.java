@@ -5,10 +5,9 @@ import cc.nanjo.web.table.entity.NPost;
 import cc.nanjo.web.table.service.NPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author: xw
@@ -22,15 +21,21 @@ public class MainController extends BaseController {
 
 
     @RequestMapping("/")
-    public String main(HttpServletRequest request) {
+    public String main(Model model) {
         NPost nPost = nPostService.getById(1L);
         return "main/index";
     }
 
-    @RequestMapping("/p/{postId}")
-    public String p(HttpServletRequest request, @RequestParam("postId") Long postId) {
-        NPost nPost = nPostService.getById(postId);
+    @RequestMapping("/page/{pageNum}")
+    public String page(Model model, @RequestParam("pageNum") Integer pageNum) {
+        NPost nPost = nPostService.getById(1L);
+        return "main/index";
+    }
 
+    @RequestMapping("/post/{postId}")
+    public String p(Model model, @RequestParam("postId") Long postId) {
+        NPost nPost = nPostService.getById(postId);
+        model.addAttribute("post", nPost);
         return "main/post";
     }
 
