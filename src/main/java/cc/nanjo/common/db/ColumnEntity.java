@@ -1,4 +1,4 @@
-package cc.nanjo.db;
+package cc.nanjo.common.db;
 
 public class ColumnEntity {
     // 列名

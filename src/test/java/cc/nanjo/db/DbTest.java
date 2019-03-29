@@ -1,5 +1,6 @@
 package cc.nanjo.db;
 
+import cc.nanjo.common.db.GenComp;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,10 +26,10 @@ public class DbTest {
     @Test
     public void testGen() {
         try {
-            // String db = "master";
+            String filePackage = "cc.nanjo.web.table";
             String db = "master";
-            List<String> list = Arrays.asList("");
-            byte[] zipByte = genComp.generatorCode(db, list);
+            List<String> list = Arrays.asList("n_post", "n_reply", "n_user", "n_content");
+            byte[] zipByte = genComp.generatorCode(db, list, filePackage);
             FileUtils.writeByteArrayToFile(new File("E:\\DbFiles\\" + System.currentTimeMillis() + ".zip"), zipByte);
         } catch (Exception e) {
             e.printStackTrace();

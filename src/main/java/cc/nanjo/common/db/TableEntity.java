@@ -1,4 +1,4 @@
-package cc.nanjo.db;
+package cc.nanjo.common.db;
 
 import java.util.List;
 

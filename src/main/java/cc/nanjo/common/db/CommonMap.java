@@ -1,4 +1,4 @@
-package cc.nanjo.db;
+package cc.nanjo.common.db;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,8 +40,7 @@ public class CommonMap {
         javaTypeMap.put("timestamp", "LocalDateTime");
 
         javaTypeMap.put("tablePrefix", "");// 前缀
-        javaTypeMap.put("package", "com.waterelephant.common");
-        javaTypeMap.put("author", "HUANGJIN");
+        javaTypeMap.put("author", "xw");
         javaTypeMap.put("jdk", "1.8");
         javaTypeMap.put("version", "1.0");
     }

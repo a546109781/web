@@ -1,4 +1,4 @@
-package cc.nanjo.db;
+package cc.nanjo.common.db;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.WordUtils;
@@ -54,7 +54,7 @@ public class GenUtils {
     /**
      * 生成代码
      */
-    public static void generatorCode(String db, Map<String, Object> table, List<Map<String, Object>> columns, ZipOutputStream zip) {
+    public static void generatorCode(String db, Map<String, Object> table, List<Map<String, Object>> columns, ZipOutputStream zip, String filePackage) {
         // 表信息
         TableEntity tableEntity = new TableEntity();
         tableEntity.setTableName(table.get("tableName") + "");
@@ -109,7 +109,7 @@ public class GenUtils {
         map.put("classname", tableEntity.getClassname());
         map.put("pathName", tableEntity.getClassname().toLowerCase());
         map.put("columns", tableEntity.getColumns());
-        map.put("package", CommonMap.javaTypeMap.get("package"));
+        map.put("package", filePackage);
         map.put("author", CommonMap.javaTypeMap.get("author"));
         map.put("date", format(new Date(), DATE_PATTERN));
         map.put("db", db);

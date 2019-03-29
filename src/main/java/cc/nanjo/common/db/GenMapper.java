@@ -1,10 +1,12 @@
-package cc.nanjo.db;
+package cc.nanjo.common.db;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Map;
 
+@DS("master")
 public interface GenMapper {
 
     @Select("select table_name tableName, engine, table_comment tableComment, create_time createTime from information_schema.tables  where table_schema = (SELECT DATABASE()) and table_name = #{tableName}")

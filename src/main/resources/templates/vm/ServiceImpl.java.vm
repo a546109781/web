@@ -1,0 +1,19 @@
+package ${package}import com.baomidou.dynamic.datasource.annotation.DS;
+import org.springframework.stereotype.Service;
+
+.service.impl;
+    ${package}
+        .entity.${className};
+    ${package}
+        .service.${className}Service; ${package}.mapper.${className}Mapper;
+
+/**
+ * Module: ${className}.java
+ *
+ * @date ${date}
+ */
+@Service
+@DS("${db}")
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {
+
+}
