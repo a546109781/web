@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(exclude = DruidDataSourceAutoConfigure.class)
-@MapperScan({"cc.nanjo.*.*.mapper", "cc.nanjo.common.db"})
+@MapperScan({"cc.nanjo.*.*.mapper", "cc.nanjo.common.db", "cc.nanjo.common.*.*.mapper"})
 public class WebApplication {
 
     public static void main(String[] args) {

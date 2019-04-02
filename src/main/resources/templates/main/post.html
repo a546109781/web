@@ -3,9 +3,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title th:text="${post.title}"></title>
+    <link rel="stylesheet" th:href="@{/css/base/reset.css}"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
 </head>
 <body>
+<div id="content">
+    <div id="top">
+        <h1>nanjo.cc</h1>
+    </div>
+    <div id="post">
+        <div id="title">
+            <p th:text="${post.title}"></p>
+            <p class="info" th:text="'作者：' + ${post.author}"></p>
+            <p class="info" th:text="'时间：' + ${post.createTime}"></p>
+        </div>
+        <p id="view" th:text="${post.content}"></p>
 
+        <div id="reply-list">
+            <div th:each="reply:${post.replyList}">
+                <h4 th:text="${reply.author}"></h4>
+                <p th:text="${reply.content}"></p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

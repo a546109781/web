@@ -1,10 +1,27 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>nanjo.cc - web</title>
-</head>
+    <link rel="stylesheet" th:href="@{/css/base/reset.css}"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+</head>/
 <body>
-
+<div id="content">
+    <div id="top">
+        <h1>nanjo.cc</h1>
+    </div>
+    <div id="post-list">
+        <div id="post" th:each="post:${postList}">
+            <div id="title">
+                <a th:href="@{'/post/' + ${post.id}}" th:text="${post.title}"></a>
+                <p class="info" th:text="'作者：' + ${post.author}"></p>
+                <p class="info" th:text="'时间：' + ${post.time}"></p>
+            </div>
+            <p id="view" class="longtext w-800" th:text="${post.content}"></p>
+        </div>
+    </div>
+</div>
 </body>
 </html>

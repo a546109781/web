@@ -18,14 +18,13 @@ public class BaseController {
 
 
     @ExceptionHandler(Exception.class)
-    public void exception(Exception e, HttpServletRequest request){
+    public void exception(Exception e, HttpServletRequest request) {
 
     }
 
 
     @ModelAttribute
     public HttpServletRequest modelAttribute(HttpServletRequest request, HttpServletResponse response) {
-
 
         return request;
     }

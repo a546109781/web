@@ -1,0 +1,37 @@
+#content {
+    width: 960px;
+    margin: 0 auto 0;
+    padding: 20px;
+}
+#top {
+    border-bottom: 1px solid #ddd;
+}
+#view {
+    font-size: 13px;
+    color: #666;
+}
+
+#title a {
+    padding-top: 5px;
+    font-size: 16px;
+    color: black;
+}
+
+#post {
+    padding-top: 8px;
+    margin-top: 3px;
+    border-bottom: 1px solid #ddd;
+}
+
+.info {
+    margin-left: 20px;
+    display: inline;
+    font-size: 12px;
+    color: #999;
+}
+
+.longtext {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}

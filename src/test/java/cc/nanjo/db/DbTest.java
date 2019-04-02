@@ -28,7 +28,7 @@ public class DbTest {
         try {
             String filePackage = "cc.nanjo.web.table";
             String db = "master";
-            List<String> list = Arrays.asList("n_post", "n_reply", "n_user", "n_content");
+            List<String> list = Arrays.asList("n_servent");
             byte[] zipByte = genComp.generatorCode(db, list, filePackage);
             FileUtils.writeByteArrayToFile(new File("E:\\DbFiles\\" + System.currentTimeMillis() + ".zip"), zipByte);
         } catch (Exception e) {
