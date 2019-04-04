@@ -6,12 +6,20 @@ import cc.nanjo.common.util.okhttp.OkHttpUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -67,6 +75,34 @@ public class WebApplicationTests {
                     //System.out.println(obj.toString());
                     e.printStackTrace();
                 }
+            }
+        }
+    }
+
+
+    @Test
+    public void getFile() throws InterruptedException {
+        List<NServent> list = nServentService.list();
+        for (NServent nServent : list) {
+            Thread.sleep(1000);
+            String avatar = nServent.getAvatar();
+            OkHttpClient okClient = new OkHttpClient();
+            Request request = new Request.Builder().url(avatar).build();
+            try {
+                okClient.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onResponse(Call arg0, Response arg1) throws IOException {
+                        byte[] buffer = arg1.body().bytes();
+                        FileUtils.writeByteArrayToFile(new File("src/main/resources/static/fate/img/" + "avatar_" + avatar.substring(avatar.length() - 7)), buffer);
+                    }
+
+                    @Override
+                    public void onFailure(Call arg0, IOException arg1) {
+                        System.out.println("获取服务器数据失败");
+                    }
+                });
+            } catch (Exception e) {
+                System.out.println(e);
             }
         }
     }
