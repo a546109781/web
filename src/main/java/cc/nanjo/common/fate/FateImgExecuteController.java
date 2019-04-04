@@ -16,15 +16,16 @@ import java.util.List;
  */
 @Slf4j
 @Controller
+@RequestMapping("/public")
 public class FateImgExecuteController {
 
     @Autowired
     private NServentService nServentService;
 
     @RequestMapping("/fate-grand-order/i-q")
-    public String toImgPage(Model model){
+    public String toImgPage(Model model) {
         List<NServent> list = nServentService.list();
-
+        model.addAttribute("list", list);
         return "fate/fgo/img";
     }
 

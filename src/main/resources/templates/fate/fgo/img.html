@@ -1,39 +1,130 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>FGO英灵印象问卷</title>
+    <link rel="stylesheet" th:href="@{/res/layui/css/layui.css}"/>
+    <link rel="stylesheet" th:href="@{/res/css/main.css}"/>
 </head>
+<style>
+    .td-1 {
+        width: 100px;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap
+    }
+</style>
 <body>
-<div>
-<table>
-    <thead>
-        <tr>
-            <td>英灵</td>
-            <td>初始印象</td>
-            <td>现在印象</td>
-            <td>英灵</td>
-            <td>初始印象</td>
-            <td>现在印象</td>
-            <td>英灵</td>
-            <td>初始印象</td>
-            <td>现在印象</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
+<div class="layui-row">
+    <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <td>英灵</td>
+                <td>初始印象</td>
+                <td>现在印象</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="servent:${list}">
+                <span th:if="${servent.id % 3 == 1}">
+                    <td class="td-1"><img th:src="${servent.avatar}"><p th:text="${servent.SName}"></p></td>
+                    <td class="td-2">
+                    <div class="layui-form-item layui-form-text">
+                        <div class="layui-input-block">
+                          <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="td-3"><div class="layui-form-item layui-form-text">
+                        <div class="layui-input-block">
+                          <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                      </div>
+                    </td>
+                </span>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <td>英灵</td>
+                <td>初始印象</td>
+                <td>现在印象</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="servent:${list}">
+                <span th:if="${servent.id % 3 == 2}">
+                    <td class="td-1"><img th:src="${servent.avatar}"><p th:text="${servent.SName}"></p></td>
+                    <td class="td-2">
+                    <div class="layui-form-item layui-form-text">
+                        <div class="layui-input-block">
+                          <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="td-3"><div class="layui-form-item layui-form-text">
+                        <div class="layui-input-block">
+                          <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                      </div>
+                    </td>
+                </span>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+        <table class="layui-table">
+            <thead>layui-input
+            <tr>
+                <td>英灵</td>
+                <td>初始印象</td>
+                <td>现在印象</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="servent:${list}">
+                <span th:if="${servent.id % 3 == 0}">
+                    <td class="td-1"><img th:src="${servent.avatar}"><p th:text="${servent.SName}"></p></td>
+                    <td class="td-2">
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">文本域</label>
+                        <div class="layui-input-block">
+                          <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="td-3"><div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">文本域</label>
+                        <div class="layui-input-block">
+                          <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                      </div>
+                    </td>
+                </span>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
+<script type="text/javascript" th:src="@{/res/layui/layui.js}"></script>
+<script>
+    //创建一个编辑器
+    var editIndex = layedit.build('.layui-textarea');
+
+    //自定义验证规则
+    form.verify({
+        content: function (value) {
+            layedit.sync(editIndex);
+        }
+    });
+</script>
 </html>

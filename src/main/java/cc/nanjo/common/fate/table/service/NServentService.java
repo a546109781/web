@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 /**
  * Module: NServent.java
  *
- * @date 2019-04-01
+ * @date 2019-04-04
  */
 public interface NServentService extends IService<NServent> {
 }

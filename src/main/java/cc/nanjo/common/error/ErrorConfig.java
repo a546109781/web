@@ -16,14 +16,11 @@ public class ErrorConfig {
 
     @Bean
     public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer() {
-        return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
-            @Override
-            public void customize(ConfigurableWebServerFactory factory) {
-                ErrorPage errorPage400 = new ErrorPage(HttpStatus.BAD_REQUEST, "/error-400");
-                ErrorPage errorPage404 = new ErrorPage(HttpStatus.NOT_FOUND, "/error-404");
-                ErrorPage errorPage500 = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error-500");
-                factory.addErrorPages(errorPage400, errorPage404, errorPage500);
-            }
+        return factory -> {
+            ErrorPage errorPage400 = new ErrorPage(HttpStatus.BAD_REQUEST, "/error-400");
+            ErrorPage errorPage404 = new ErrorPage(HttpStatus.NOT_FOUND, "/error-404");
+            ErrorPage errorPage500 = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error-500");
+            factory.addErrorPages(errorPage400, errorPage404, errorPage500);
         };
     }
 
