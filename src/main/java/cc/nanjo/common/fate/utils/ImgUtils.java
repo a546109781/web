@@ -47,7 +47,8 @@ public class ImgUtils extends JPanel {
         graphics2D.fillRect(120, 0, 1, height);
         graphics2D.fillRect(300, 0, 1, height);
         graphics2D.fillRect(0, 40, width, 1);
-        graphics2D.setFont(new Font("Xhei Mono.Dongqing", Font.PLAIN, 16));
+        Font font = new Font("Xhei Mono.Dongqing", Font.PLAIN, 16);
+        graphics2D.setFont(font);
         graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
         for (int i = 1; i <= submits.size(); i++) {
             Submits submits = this.submits.get(i - 1);
@@ -59,9 +60,6 @@ public class ImgUtils extends JPanel {
             graphics2D.drawString(submits.getPreInput(), 120, (i - 1) * 100 + 60);
             graphics2D.drawString(submits.getNowInput(), 300, (i - 1) * 100 + 60);
         }
-
-        //设置字体:字体、字号、大小
-
         graphics2D.setFont(new Font("Xhei Mono.Dongqing", Font.PLAIN, 20));
         graphics2D.setColor(Color.WHITE);
         graphics2D.drawString("英灵", 40, 28);
@@ -73,8 +71,8 @@ public class ImgUtils extends JPanel {
 
     public static void main(String[] args) {
         List<Submits> submits = new ArrayList<>();
-        for (int i = 1; i <= 50; i++) {
-            submits.add(new Submits((long) i, "但是它个大帅哥托尔斯泰各位", "但是它个大帅哥托尔斯泰各位"));
+        for (long i = 1; i <= 50; i++) {
+            submits.add(new Submits(i, "但是它个大帅哥托尔斯泰各位", "但是它个大帅哥托尔斯泰各位"));
         }
         ImgUtils imgUtils = new ImgUtils(submits);
         try {

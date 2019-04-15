@@ -107,13 +107,22 @@ public class WebApplicationTests {
         }
     }
 
-    private boolean isNum(String charid) {
+    private static boolean isNum(String charid) {
         for (char c : charid.toCharArray()) {
+            if (c == '.') {
+                continue;
+            }
             if (c < 48 || c > 57) {
                 return false;
             }
         }
         return true;
+    }
+
+
+    @Test
+    public void main() {
+        System.out.println(isNum("41654685234864.12"));;
     }
 
 }
