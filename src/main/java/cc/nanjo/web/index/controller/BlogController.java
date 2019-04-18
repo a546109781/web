@@ -1,7 +1,6 @@
 package cc.nanjo.web.index.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 2019-4-2 15:00
  */
 @Slf4j
-@Controller
+//@Controller
 public class BlogController {
 
     @RequestMapping("/")

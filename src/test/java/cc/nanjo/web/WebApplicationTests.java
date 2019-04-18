@@ -119,10 +119,4 @@ public class WebApplicationTests {
         return true;
     }
 
-
-    @Test
-    public void main() {
-        System.out.println(isNum("41654685234864.12"));;
-    }
-
 }

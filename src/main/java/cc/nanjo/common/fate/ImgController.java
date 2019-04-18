@@ -22,13 +22,13 @@ import java.util.List;
  */
 @Slf4j
 @Controller
-@RequestMapping("/public/fate-grand-order")
-public class FateImgExecuteController {
+@RequestMapping("/public/img")
+public class ImgController {
 
     @Autowired
     private NServentService nServentService;
 
-    @RequestMapping("i-q")
+    @RequestMapping("exec")
     public String toImgPage(Model model) {
         List<NServent> list = nServentService.list();
         model.addAttribute("list", list);
