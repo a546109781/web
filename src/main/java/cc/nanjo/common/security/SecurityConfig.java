@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.loginProcessingUrl("/authentication/login-service") //用户登录
                 .and()
                 .authorizeRequests()
-                .antMatchers("/public/**/**", "/js*", "/css/*", "/post/*", "/res/**/*.*", "*.php") //不拦截的URL
+                .antMatchers("/public/**/**", "/js*", "/css/*", "/post/*", "/res/**/*.*", "/public/test/google") //不拦截的URL
                 .permitAll()
                 .anyRequest()
                 .authenticated()

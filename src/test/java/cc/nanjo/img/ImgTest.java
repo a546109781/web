@@ -1,6 +1,5 @@
 package cc.nanjo.img;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
@@ -25,9 +24,9 @@ public class ImgTest {
     @Test
     public void testImg() throws Exception {
 
-        String str = "";
+        String str = "把你的粉红色APP发我一个";
         String path = "src/main/resources/static/other/img/1.jpg";
-        int strMaxHeight = 30, strMinHeight = 15;
+        int strMaxHeight = 28, strMinHeight = 14;
         FileInputStream inputStream = new FileInputStream(new File(path));
         BufferedImage bufferedImage = ImageIO.read(inputStream);
         Graphics2D graphics = (Graphics2D) bufferedImage.getGraphics();
@@ -36,7 +35,7 @@ public class ImgTest {
         int fontSize = bufferedImage.getWidth() / getRealLength(str);
         fontSize = fontSize > strMaxHeight ? strMaxHeight : fontSize;
         fontSize = fontSize < strMinHeight ? strMinHeight : fontSize;
-        graphics.setFont(new Font("黑体", Font.PLAIN, fontSize));
+        graphics.setFont(new Font("Xhei Mono.Dongqing", Font.PLAIN, fontSize));
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
         graphics.setColor(Color.black);
         if (fontSize == strMinHeight) {
@@ -48,7 +47,7 @@ public class ImgTest {
             int x = (bufferedImage.getWidth() - (fontSize * getRealLength(str))) / 2;
             graphics.drawString(str, x, bufferedImage.getHeight() - 10);
         }
-        ImageIO.write(bufferedImage, "JPEG", new FileOutputStream("C:\\Users\\xw\\Desktop\\111.jpg"));
+        ImageIO.write(bufferedImage, "JPEG", new FileOutputStream("C:\\Users\\Xanthuim\\Desktop\\111.jpg"));
 
     }
 
@@ -73,6 +72,7 @@ public class ImgTest {
         int realLength = getRealLength(value) * 2;
         int valueLength = 0;
         String chinese = "[\u4e00-\u9fa5]";
+
         for (int i = 0; i < value.length(); i++) {
             stringBuilder.append(value.charAt(i));
             String temp = value.substring(i, i + 1);
