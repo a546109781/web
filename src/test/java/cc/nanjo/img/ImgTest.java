@@ -24,7 +24,7 @@ public class ImgTest {
     @Test
     public void testImg() throws Exception {
 
-        String str = "把你的粉红色APP发我一个";
+        String str = "你看有人理你吗";
         String path = "src/main/resources/static/other/img/1.jpg";
         int strMaxHeight = 28, strMinHeight = 14;
         FileInputStream inputStream = new FileInputStream(new File(path));
