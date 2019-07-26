@@ -58,7 +58,7 @@ public class ImgUtils extends JPanel {
         for (int i = 1; i <= submits.size(); i++) {
             Submits submits = this.submits.get(i - 1);
             graphics2D.fillRect(0, 40 + (i * 100), width, 1);
-            FileInputStream inputStream = new FileInputStream(new File("src/main/resources/static/fate/img/avatar_" + String.format("%03d", submits.getId()) + ".jpg"));
+            FileInputStream inputStream = new FileInputStream(new File("src/BgoNewsExecute/resources/static/fate/img/avatar_" + String.format("%03d", submits.getId()) + ".jpg"));
             BufferedImage avatar = ImageIO.read(inputStream);
             graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, 0.99f));
             graphics2D.drawImage(avatar, 25, (i - 1) * 100 + 50, 72, 78, null);

@@ -29,14 +29,14 @@ public class MainController {
     public String main(Model model) {
         List<PostListDto> postList = mainService.getPostList(1, 10);
         model.addAttribute("postList", postList);
-        return "main/index";
+        return "BgoNewsExecute/index";
     }
 
     @RequestMapping("page/{pageNum}")
     public String page(Model model, @PathVariable Integer pageNum) {
         List<PostListDto> postList = mainService.getPostList(pageNum, 10);
         model.addAttribute("postList", postList);
-        return "main/index";
+        return "BgoNewsExecute/index";
     }
 
     @RequestMapping(value = "post/{postId}", method = RequestMethod.GET)
@@ -44,7 +44,7 @@ public class MainController {
         log.info("进入帖子详情页面");
         PostContentDto postContentDto = mainService.getPostContentByPostId(postId);
         model.addAttribute("post", postContentDto);
-        return "main/post";
+        return "BgoNewsExecute/post";
     }
 
 }

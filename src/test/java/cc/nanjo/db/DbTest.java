@@ -26,11 +26,11 @@ public class DbTest {
     @Test
     public void testGen() {
         try {
-            String filePackage = "cc.nanjo.web.table";
+            String filePackage = "cc.nanjo.common.fate.calendar";
             String db = "master";
-            List<String> list = Arrays.asList("sys_user", "sys_role", "sys_permission");
+            List<String> list = Arrays.asList("bgo_news", "ics_vevent");
             byte[] zipByte = genComp.generatorCode(db, list, filePackage);
-            FileUtils.writeByteArrayToFile(new File("E:\\DbFiles\\" + System.currentTimeMillis() + ".zip"), zipByte);
+            FileUtils.writeByteArrayToFile(new File("D:\\DbFiles\\" + System.currentTimeMillis() + ".zip"), zipByte);
         } catch (Exception e) {
             e.printStackTrace();
         }

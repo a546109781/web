@@ -14,27 +14,27 @@ public class BlogController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        return "main/blog/index";
+        return "BgoNewsExecute/blog/index";
     }
 
     @RequestMapping("/whisper")
     public String whisper(Model model) {
-        return "main/blog/whisper";
+        return "BgoNewsExecute/blog/whisper";
     }
 
     @RequestMapping("/leacots")
     public String leacots(Model model) {
-        return "main/blog/leacots";
+        return "BgoNewsExecute/blog/leacots";
     }
 
     @RequestMapping("/album")
     public String album(Model model) {
-        return "main/blog/album";
+        return "BgoNewsExecute/blog/album";
     }
 
     @RequestMapping("/about")
     public String about(Model model) {
-        return "main/blog/about";
+        return "BgoNewsExecute/blog/about";
     }
 
 }

@@ -158,7 +158,7 @@ public class GenUtils {
      * 获取文件名
      */
     public static String getFileName(String template, String className, String packageName) {
-        String packagePath = "main" + File.separator + "java" + File.separator;
+        String packagePath = "BgoNewsExecute" + File.separator + "java" + File.separator;
         if (StringUtils.isNotBlank(packageName)) {
             packagePath += packageName.replace(".", File.separator) + File.separator;
         }

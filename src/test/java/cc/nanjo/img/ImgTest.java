@@ -25,7 +25,7 @@ public class ImgTest {
     public void testImg() throws Exception {
 
         String str = "你看有人理你吗";
-        String path = "src/main/resources/static/other/img/1.jpg";
+        String path = "src/BgoNewsExecute/resources/static/other/img/1.jpg";
         int strMaxHeight = 28, strMinHeight = 14;
         FileInputStream inputStream = new FileInputStream(new File(path));
         BufferedImage bufferedImage = ImageIO.read(inputStream);
