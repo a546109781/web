@@ -4,7 +4,7 @@ spring:
       datasource:
         master:
           username: root
-          password: root
+          password:
           url: jdbc:mysql://localhost:3306/web?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useServerPrepStmts=false&rewriteBatchedStatements=true&serverTimezone=GMT%2B8
           driver-class-name: com.mysql.cj.jdbc.Driver
           druid: #这里可以重写默认值

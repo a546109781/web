@@ -18,7 +18,7 @@ import java.util.UUID;
 @Slf4j
 public class Calendar {
 
-    String templateVevent = "BEGIN:VEVENT\n" +
+    private static String templateVevent = "BEGIN:VEVENT\n" +
             "UID:${uid}\n" +
             "DTSTART;TZID=Asia/Shanghai:${startTime}\n" +
             "DTEND;TZID=Asia/Shanghai:${endTime}\n" +
@@ -29,7 +29,7 @@ public class Calendar {
             "URL:${url}\n" +
             "END:VEVENT\n";
 
-    String templateIcs = "BEGIN:VCALENDAR\n" +
+    private static String templateIcs = "BEGIN:VCALENDAR\n" +
             "VERSION:2.0\n" +
             "X-WR-CALNAME:命运-冠位指定\n" +
             "X-APPLE-CALENDAR-COLOR:#34aadc\n" +
@@ -51,7 +51,7 @@ public class Calendar {
      */
 
 
-    public String builderIcs(List<IcsVevent> icsVevents) {
+    public static String builderIcs(List<IcsVevent> icsVevents) {
         StringBuilder stringBuilder = new StringBuilder();
         for (IcsVevent icsVevent : icsVevents) {
             String icsStr = "";

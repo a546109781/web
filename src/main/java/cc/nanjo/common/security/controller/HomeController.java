@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 2019-5-10 10:15
  */
 @Slf4j
-@Controller
+//@Controller
 public class HomeController {
 
     @RequestMapping("/")

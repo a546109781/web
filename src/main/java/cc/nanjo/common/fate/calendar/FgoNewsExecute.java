@@ -51,7 +51,7 @@ public class FgoNewsExecute {
     }
 
 
-    public void testMaintenance() {
+    public void getMaintenance() {
         String result = OkHttpUtils.builder().get(maintenanceUrl, header);
         Document document = Jsoup.parse(result);
 
@@ -79,7 +79,7 @@ public class FgoNewsExecute {
         }
     }
 
-    public void testNews() {
+    public void getNews() {
         String type = "1";
         String listUrl;
         for (int i = page; i >= 1; i--) {

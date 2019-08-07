@@ -1,5 +1,9 @@
 package cc.nanjo.img;
 
+import cc.nanjo.common.word.entity.Word;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
@@ -11,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +98,15 @@ public class ImgTest {
     }
 
     public static void main(String[] args) {
-        ImgTest imgTest = new ImgTest();
+
+        System.out.println("阿鼻地狱".substring("阿鼻地狱".length() - 1));
+
     }
+
+
+
+
+
+
 
 }
