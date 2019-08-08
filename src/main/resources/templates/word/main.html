@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>为所欲为成语接龙生成器</title>
+    <link rel="stylesheet" th:href="@{/css/base/reset.css}"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" th:href="@{/res/layui/css/layui.css}"/>
+    <link rel="stylesheet" th:href="@{/res/css/main.css}"/>
+    <script type="text/javascript" th:src="@{/res/layui/layui.js}"></script>
+</head>
+<body>
+<div id="content">
+    <div id="post">
+        <div id="title" style="margin-bottom: 10px;">
+            <span>请输入一个成语：</span><input class="word" type="text"/>
+            <button id="submit">提交</button>
+        </div>
+    </div>
+    <div id="result" style="margin-top: 10px;">
+        <p style="color: #f55" class="msg"></p>
+        <p id="data"></p>
+    </div>
+</div>
+</body>
+<script>
+
+    var word = '';
+
+    layui.use(['jquery', 'layer'], function () {
+        var $ = layui.$ //重点处
+            , layer = layui.layer;
+        $("#submit").click(function () {
+            var val = $(".word").val();
+            if (val == '' || val == null || val == word) {
+                return;
+            }
+            word = val;
+            $.post(window.location.href + "/getWords", {
+                word: word
+            }, function (back) {
+                showResult(back);
+            }, "json");
+        });
+
+        function showResult(result) {
+            $(".msg").text('');
+            $("#data").text('');
+            if ('0' == result.code) {
+                $("#data").text(result.data);
+            } else {
+                $(".msg").text(result.msg);
+            }
+        }
+    });
+</script>
+</html>

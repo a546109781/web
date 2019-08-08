@@ -3,12 +3,14 @@ package ${package}.mapper;
 import ${package}.entity.${className};
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * Module: ${className}.java
  *
  * @date ${date}
  */
+@Repository
 public interface ${className}Mapper extends BaseMapper<${className}> {
 
 }

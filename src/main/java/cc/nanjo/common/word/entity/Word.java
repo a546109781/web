@@ -7,6 +7,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+
+import java.io.Serializable;
+
 /**
  * Module: Word.java
  *
@@ -14,7 +17,7 @@ import lombok.Data;
  */
 @Data
 @TableName(value = "word")
-public class Word  {
+public class Word implements Serializable {
 
     /**  */
     @TableId(value = "id", type = IdType.AUTO)

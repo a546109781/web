@@ -18,6 +18,7 @@
 }
 
 #post {
+    padding: 5px;
     padding-top: 8px;
     margin-top: 3px;
     border-bottom: 1px solid #ddd;

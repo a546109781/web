@@ -4,7 +4,9 @@ import cc.nanjo.common.fate.calendar.BgoNewToCalendarTask;
 import cc.nanjo.common.fate.calendar.BgoNewsExecute;
 import cc.nanjo.common.fate.calendar.service.BgoNewsService;
 import cc.nanjo.common.fate.calendar.service.IcsVeventService;
+import cc.nanjo.common.word.entity.ResponseEntity;
 import cc.nanjo.common.word.entity.Word;
+import cc.nanjo.common.word.service.WordExecute;
 import cc.nanjo.common.word.service.WordService;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -25,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -60,7 +63,7 @@ public class WebApplicationTests {
 
     @Test
     public void testWord() throws Exception {
-        String s = IOUtils.toString(new InputStreamReader(new FileInputStream(new File("C:\\Users\\xw\\Desktop\\idiom.json"))));
+        String s = IOUtils.toString(new InputStreamReader(new FileInputStream(new File("C:\\Users\\admin\\Desktop\\idiom.json"))));
 
         JSONArray words = JSONObject.parseArray(s);
 
@@ -108,10 +111,23 @@ public class WebApplicationTests {
     }
 
     private String pinyinSplit(String pinyin) {
-        map.forEach((k, v) -> {
-            pinyin.replaceAll(k, v);
-        });
+        Set<String> keySet = map.keySet();
+        for (String key : keySet) {
+            pinyin = pinyin.replaceAll(key, map.get(key));
+        }
         return pinyin;
+    }
+
+    @Autowired
+    private WordExecute wordExecute;
+
+    @Test
+    public void testController() throws Exception {
+
+        ResponseEntity execute = wordExecute.execute("悲歌易水");
+
+        log.info(JSONObject.toJSONString(execute));
+
     }
 
 

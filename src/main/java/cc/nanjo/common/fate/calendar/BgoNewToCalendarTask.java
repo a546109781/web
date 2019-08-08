@@ -32,9 +32,7 @@ public class BgoNewToCalendarTask {
 
     @Scheduled(cron = "0 30/59 0/1 * * ? ")
     public void taskListBgoNews() {
-
         bgoNewsExecute.getBgoNewList();
-
     }
 
     @Scheduled(cron = "0 35/59 0/1 * * ? ")
@@ -46,11 +44,5 @@ public class BgoNewToCalendarTask {
         icsContent.setCreateTime(LocalDateTime.now());
         icsContentService.save(icsContent);
     }
-
-    @Scheduled(cron = "0/3 * * * * ? ")
-    public void test() {
-        log.info("...................");
-    }
-
 
 }

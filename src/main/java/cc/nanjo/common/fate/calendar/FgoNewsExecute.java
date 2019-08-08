@@ -74,8 +74,6 @@ public class FgoNewsExecute {
 
             String start = fixStr(split[0]);
             String end = fixDate(start, fixStr(split[1]));
-
-
         }
     }
 
