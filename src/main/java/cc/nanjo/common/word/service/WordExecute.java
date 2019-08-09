@@ -61,13 +61,16 @@ public class WordExecute {
         } else {
             // 若没有 一级一级往下查
             List<Word> list = wordService.list(new LambdaQueryWrapper<Word>().eq(Word::getPinyinStart, pinyinEnd));
+            if(list == null || list.size() == 0){
+                return ResponseEntity.fail("该成语无法接龙……");
+            }
             this.coveList(list);
         }
         log.info(JSONObject.toJSONString(resultMap));
         resultMap.forEach((k, s) -> {
             resultList.add(k + " - " + s);
         });
-        return ResponseEntity.success(String.join("，", resultList));
+        return ResponseEntity.success(String.join("<br>", resultList));
 
     }
 
@@ -95,23 +98,6 @@ public class WordExecute {
                 this.coveList(list);
             }
         }
-    }
-
-    public boolean queryWord(List<Word> list) {
-        for (Word wordOld : list) {
-            // 先查有没有直接对应的1级关联
-            List<Word> wei = wordService.list(new LambdaQueryWrapper<Word>().eq(Word::getPinyinStart, wordOld.getPinyinEnd()).eq(Word::getPinyinEnd, "wei"));
-            if (wei != null && wei.size() != 0) {
-                Word word1 = wei.get(0);
-                resultMap.put(++count, word1.getWord());
-                return true;
-            } else {
-                // 若没有 一级一级往下查
-                list = wordService.list(new LambdaQueryWrapper<Word>().eq(Word::getPinyinStart, wordOld.getPinyinEnd()));
-                this.queryWord(list);
-            }
-        }
-        return false;
     }
 
 }

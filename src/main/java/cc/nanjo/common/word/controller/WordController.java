@@ -35,7 +35,7 @@ public class WordController {
 
     @RequestMapping("wei-suo-yu-wei")
     public String wordMain(HttpServletRequest request, HttpServletResponse response) {
-        return "word/main";
+        return "word/index";
     }
 
     @RequestMapping("wei-suo-yu-wei/getWords")

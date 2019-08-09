@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>成语接龙接到为所欲为</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{res/css/mui.min.css}"/>
+    <link rel="stylesheet" th:href="@{res/css/mui.picker.css}"/>
+    <link rel="stylesheet" th:href="@{res/css/mui.poppicker.css}"/>
+    <link rel="stylesheet" th:href="@{res/css/mui.dtpicker.css}"/>
+    <script th:src="@{res/js/mui.min.js}"></script>
+    <script th:src="@{res/js/mui.picker.js}"></script>
+    <script th:src="@{res/js/mui.poppicker.js}"></script>
+    <script th:src="@{res/js/mui.dtpicker.js}"></script>
+    <script type="text/javascript" th:src="@{/res/layui/layui.js}"></script>
+</head>
+<body>
+
+
+<form class="mui-input-group">
+    <!--输入用户名-->
+    <div class="mui-input-row">
+        <input type="text" class="mui-input-clear mui-input-clear" placeholder="请输入一个成语" id="word">
+    </div>
+    <!--提交-->
+    <div class="mui-button-row">
+        <button type="button" class="mui-btn mui-btn-primary" id="submit">提交</button>
+    </div>
+</form>
+</body>
+</html>
+<script>
+    var word = '';
+    var index;
+    layui.use(['jquery', 'layer'], function () {
+        var $ = layui.$ //重点处
+            , layer = layui.layer;
+        $("#submit").click(function () {
+            index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+            //loading层
+            index = layer.load(1, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
+            var val = $("#word").val();
+            if (val == '' || val == null || val == word) {
+                return;
+            }
+            word = val;
+            $.post(window.location.href + "/getWords", {
+                word: word
+            }, function (back) {
+                showResult(back);
+            }, "json");
+        });
+        function showResult(result) {
+            layer.close(index);
+            if ('0' == result.code) {
+                mui.alert(result.data, '结果', '确定', function () {
+                }, 'div')
+            } else {
+                mui.alert(result.msg, '提示', '确定', function () {
+                }, 'div')
+            }
+        }
+    });
+</script>
