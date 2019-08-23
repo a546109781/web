@@ -3,6 +3,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank-translucent">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <meta name="keywords" content="成语接龙 为所欲为" />
     <title>成语接龙接到为所欲为</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{res/css/mui.min.css}"/>
@@ -37,17 +43,14 @@
         var $ = layui.$ //重点处
             , layer = layui.layer;
         $("#submit").click(function () {
-            index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
-            //loading层
-            index = layer.load(1, {
-                shade: [0.1, '#fff'] //0.1透明度的白色背景
-            });
+
             var val = $("#word").val();
             if (val == '' || val == null || val == word) {
                 return;
             }
+            index = layer.load(0, {shade: false});
             word = val;
-            $.post(window.location.href + "/getWords", {
+            $.post(window.location.protocol + "//" + document.domain + window.location.pathname + "/getWords", {
                 word: word
             }, function (back) {
                 showResult(back);
