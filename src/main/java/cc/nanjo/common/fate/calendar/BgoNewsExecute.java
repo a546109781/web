@@ -4,6 +4,7 @@ import cc.nanjo.common.fate.calendar.entity.BgoNews;
 import cc.nanjo.common.fate.calendar.entity.IcsVevent;
 import cc.nanjo.common.fate.calendar.service.BgoNewsService;
 import cc.nanjo.common.fate.calendar.service.IcsVeventService;
+import cc.nanjo.common.util.StringUtil;
 import cc.nanjo.common.util.okhttp.OkHttpUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -36,10 +37,9 @@ import java.util.stream.Collectors;
 @Service
 public class BgoNewsExecute {
 
-    private static String bgoRegWordEvent1 = "◆活动时间◆";
-    private static String bgoRegWordEvent2 = "◆公开时间◆";
-    private static String bgoRegWordServer = "【维护时间】";
-    private static String pageSize = "50";
+    private static String[] bgoRegWordEvent = {"◆活动时间◆", "◆活动举办时间◆"};
+    private static String[] bgoRegWordServer = {"【维护时间】"};
+    private static String pageSize = "20";
     private static String detailUrl = "http://fgo.biligame.com/h5/news.html#detailId=";
     private static String bgoListUrl = "http://api.biligame.com/news/list.action?";
 
@@ -118,16 +118,16 @@ public class BgoNewsExecute {
         if (bgoNews.getTitle().indexOf("预告") != -1 || bgoNews.getTitle().indexOf("日替") != -1 || bgoNews.getTitle().indexOf("幕间") != -1 || bgoNews.getTitle().indexOf("强化") != -1) {
             return type;
         }
-
-        if (content.indexOf(bgoRegWordServer) != -1) {
+        String server = isServer(content);
+        if (StringUtils.isNotBlank(server)) {
             log.info("维护公告: title = [{}], url = [{}], content = {}", bgoNews.getTitle(), detailUrl + bgoNews.getId(), content);
-            content = content.substring(content.indexOf(bgoRegWordServer), content.length() - 1).replaceFirst(bgoRegWordServer, "").replaceAll(" ", "");
+            content = content.substring(content.indexOf(server), content.length() - 1).replaceFirst(server, "").replaceAll(" ", "");
             type = "1";
         }
-
-        if (content.indexOf(bgoRegWordEvent1) != -1) {
+        String event = isEvent(content);
+        if (StringUtils.isNotBlank(event)) {
             log.info("活动公告: title = [{}], url = [{}], content = {}", bgoNews.getTitle(), detailUrl + bgoNews.getId(), content);
-            content = content.substring(content.indexOf(bgoRegWordEvent1), content.length() - 1).replaceFirst(bgoRegWordEvent1, "").replaceAll(" ", "");
+            content = content.substring(content.indexOf(event), content.length() - 1).replaceFirst(event, "").replaceAll(" ", "");
             type = "2";
         }
 
@@ -241,5 +241,24 @@ public class BgoNewsExecute {
         }
         return stringBuilder.toString().substring(0, stringBuilder.toString().length() - 1);
     }
+
+    private String isServer(String content) {
+        for (String s : bgoRegWordServer) {
+            if (content.indexOf(s) != -1) {
+                return s;
+            }
+        }
+        return "";
+    }
+
+    private String isEvent(String content) {
+        for (String s : bgoRegWordEvent) {
+            if (content.indexOf(s) != -1) {
+                return s;
+            }
+        }
+        return "";
+    }
+
 
 }

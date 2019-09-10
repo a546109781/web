@@ -25,7 +25,7 @@ import java.util.TreeMap;
  * @author xw
  * @date 2019/8/8 9:57
  */
-@Controller
+//@Controller
 @Slf4j
 public class WordController {
 

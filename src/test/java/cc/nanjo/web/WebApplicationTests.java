@@ -4,6 +4,7 @@ import cc.nanjo.common.fate.calendar.BgoNewToCalendarTask;
 import cc.nanjo.common.fate.calendar.BgoNewsExecute;
 import cc.nanjo.common.fate.calendar.service.BgoNewsService;
 import cc.nanjo.common.fate.calendar.service.IcsVeventService;
+import cc.nanjo.common.tieba.TiebaSignExecute;
 import cc.nanjo.common.word.entity.ResponseEntity;
 import cc.nanjo.common.word.entity.Word;
 import cc.nanjo.common.word.service.WordExecute;
@@ -120,14 +121,13 @@ public class WebApplicationTests {
 
     @Autowired
     private WordExecute wordExecute;
+    @Autowired
+    private TiebaSignExecute tiebaSignExecute;
 
     @Test
     public void testController() throws Exception {
 
-        ResponseEntity execute = wordExecute.execute("悲歌易水");
-
-        log.info(JSONObject.toJSONString(execute));
-
+        tiebaSignExecute.signingAllTieba();
     }
 
 
