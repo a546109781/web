@@ -1,0 +1,36 @@
+body {background:#fff!important;}
+a,table,tbody,tr,td,div,input,textarea,select,button,.block_txt_c2 {background:#eee!important;}
+button{background:#ccc!important;border: 1px solid #666!important;}
+div,span {color:#333}
+#m_threads,#m_nav,#m_pbtntop,#m_posts,#b_nav,.module_wrap {max-width:1280px;margin-left:auto;margin-right:auto}
+#topicrows td{line-height:0.7em;}
+#custombg,#toppedtopic .ubbcode,#bbs_ads9_add,#topicrows>tbody>tr>.c3>span,#topicrows>tbody>tr>.c4>a,#selectTextHintWindow{display:none;}
+#mainmenu,#mainmenu *{margin:0;background:#CCC!important;}
+.stdbtn>tbody>tr>td{background:#eee!important;}
+a,p,td,tr,table,#toptopics{border:0px!important;border-radius:0px!important;box-shadow:none!important;}
+textarea,select,input{border: 1px solid #666;box-shadow:none;border-radius: 0em;}
+.catenew .c{width:16.6%!important;}
+.catenew{border-top:0px;border-left:0px;border-right:0px;box-shadow:none;border-radius: 0em;margin-top:-20px;padding-bottom:0px}
+tbody{border: 1px solid #666;}
+.stdbtn .invert{color:#f55}
+.white{color:#555}
+.quote{border: 1px solid #666;background:#ddd!important;border-radius:5px;}
+.forumbox .postrow .sigline{color:#666;border-bottom: 1px dashed #666}
+.nav_root{color:#f99}
+.comment_c_0 *{background:#ddd!important;color:#333;}
+[class*=comment_c]{border-radius:1em!important;}
+[id*=alertc]>span{background:#666!important;color:#eee}
+[class*=block_txt]{color:#666}
+.collapse_btn {border-top: 1px solid #eee;border-bottom: 1px solid #eee;}
+#m_posts{border: 1px solid #eee;box-shadow:none;border-radius: 5px;padding: 20px;}
+.block_txt_c2{border: 1px solid #eee!important;border-radius: 5px;}
+.postbtnsc,.postbtnsc *{border-radius:none;background:#666!important;color:#eee}
+.block_txt_big{background:rgba(255,255,255,0)!important;}
+.group,.tip_title{border-top:0px!important;border-bottom:0px!important;}
+.quote .b .block_txt{background:#666!important;}
+#topicrows tr:hover *{background:#ddd!important;}
+.forumbox .postrow .stat,.r_container,.forumbox .postrow .c2 .subtitle{border:0px;}
+[id*=post1strow] .c1,[id*=post1strow] .c1 *{background:#ddd!important;}
+.postbox {margin-top:6px!important;border: 1px solid #bbb!important;}
+[id*=posterinfo] div {color:#333!important;display:block!important;float:none!important;margin-top:3px}
+[id*=posterinfo] a .block_txt {color:#333!important;padding:0!important;min-width:0.5em!important;}
