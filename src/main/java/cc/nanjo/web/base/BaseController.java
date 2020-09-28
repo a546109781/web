@@ -22,7 +22,6 @@ public class BaseController {
 
     }
 
-
     @ModelAttribute
     public HttpServletRequest modelAttribute(HttpServletRequest request, HttpServletResponse response) {
 

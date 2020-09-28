@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank-translucent">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" th:href="@{/res/layui/css/layui.css}" media="all">
+    <script th:src="@{/res/layui/layui.js}"></script>
+    <title>登陆</title>
+    <style>
+        html, body {
+            margin: 0 auto;
+            width: 1024px;
+            height: 100%;
+            padding: 0;
+            overflow: hidden;
+        }
+        .login-div {
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+    <legend>请登录</legend>
+</fieldset>
+<div class="login-div">
+    <form class="layui-form layui-form-pane" action="/login" method="post">
+        <input type="hidden" name="redirect" th:value="${#httpServletRequest.getParameter('redirect')}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户账号</label>
+            <div class="layui-input-inline">
+                <input type="username" name="username" required lay-verify="username" placeholder="请输入用户"
+                       autocomplete="off"
+                       class="layui-input">
+            </div>
+            <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;"></i>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户密码</label>
+            <div class="layui-input-inline">
+                <input type="password" name="password" required lay-verify="password" placeholder="请输入密码"
+                       autocomplete="off"
+                       class="layui-input">
+            </div>
+            <i class="layui-icon layui-icon-password" style="font-size: 30px; color: #1E9FFF;"></i>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input class="layui-btn" type="submit" name="立即提交"/>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

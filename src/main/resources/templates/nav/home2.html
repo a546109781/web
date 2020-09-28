@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank-translucent">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" th:href="@{/res/layui/css/layui.css}" media="all">
+    <script th:src="@{/res/layui/layui.all.js}"></script>
+    <title>Home</title>
+</head>
+<style>
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .content {
+        color: #CCC;
+        line-height: 32px;
+        /*text-align: center;*/
+        max-width: 800px;
+        margin-top: 80px;
+        margin-right: auto;
+        margin-left: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    .target {
+        color: #f55;
+    }
+</style>
+<body th:style="'background:url(/res/img/bg.jpg) no-repeat fixed center; background-size:100%'">
+<div class="content">
+    <h1><a href="/">ARKNIGHTS.WIKI</a></h1>
+    <p>话是这么说，但是这里并不是真正的明日方舟WIKI……^_^</p>
+    <a target="_blank" href="http://ak.mooncell.wiki/w/首页" class="target">>>>>>>>> 点击前往真正的明日方舟 WIKI 网站 PRTS <<<<<<<<<</a>
+    <a target="_blank" href="https://ak.hypergryph.com/index" class="target">明日方舟官方网站</a>
+</div>
+</body>
+</html>

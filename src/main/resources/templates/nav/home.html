@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank-translucent">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" th:href="@{/css/style.css}" media="all">
+    <link rel="stylesheet" th:href="@{/res/layui/css/layui.css}" media="all">
+    <script th:src="@{/res/layui/layui.all.js}"></script>
+    <style th:inline="css">
+        body {
+            width: 100%;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            border-radius: 4px;
+        }
+        .logo {
+            padding: 0;
+            height: 60%;
+            position:absolute;
+            overflow: hidden;
+        }
+        .top-nav {
+            z-index: 1;
+            position:absolute;
+            min-width: 100%;
+            top: 50%;
+        }
+
+        .left {
+            position: fixed;
+            float: left;
+            width: 20%;
+        }
+
+        .right {
+            float: left;
+            left: 20%;
+            width: 80%;
+            position: relative;
+        }
+
+        .header-left {
+            min-width: 100%;
+        }
+
+        .content::-webkit-scrollbar {
+            display: none
+        }
+
+        .content-list {
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            float: left;
+            min-width: 100%;
+            min-height: 100%;
+            list-style: none;
+        }
+
+        .content-grid {
+            width: 150px;
+            height: 100%;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            flex: 3;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .footer-class {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="left">
+        <div class="header-left">
+            <div class="logo">
+                <img th:src="@{/res/img/banner.jpg}" />
+            </div>
+            <div class="top-nav">
+                <ul>
+                    <li class="active"><a href="/">导航</a></li>
+                    <li><a target="_blank" href="https://ak.hypergryph.com/index" class="black">官方网站</a></li>
+                    <li><a target="_blank" href="https://www.weibo.com/arknights" class="black1">官方微博</a></li>
+                </ul>
+                <p class="footer-class">推荐网站：<a class="button">填写表单</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="content">
+            <ul class="content-list">
+                <li class="content-grid">
+                    <a href="single.html" class="b-link-stripe b-animate-go  thickbox">
+                        <img th:src="@{/res/img/banner.jpg}"/>
+                        <div class="b-wrapper">
+                            <h2 class="b-animate b-from-left    b-delay03 ">
+                                <span>Cool App Design</span>
+                                <p>development, mobile</p>
+                                <i> </i>
+                            </h2>
+                        </div>
+                    </a>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="form" style="display: none; padding:20px">
+    <form class="layui-form layui-form-pane" method="post" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">名称</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" lay-verify="required" lay-reqtext="该项是必填项，不能为空" placeholder="请输入"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <label class="layui-form-label">作者</label>
+            <div class="layui-input-inline">
+                <input type="text" name="author" lay-verify="required" lay-reqtext="该项是必填项，不能为空" placeholder="请输入"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">链接</label>
+            <div class="layui-input-block">
+                <input type="text" name="url" lay-verify="required" lay-reqtext="该项是必填项，不能为空" placeholder="请输入"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">说明</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">封面</label>
+            <div class="layui-upload-drag" id="upload">
+                <i class="layui-icon"></i>
+                <p>点击上传，或将文件拖拽到此处</p>
+                <div class="layui-hide" id="uploadView">
+                    <hr>
+                    <img src="" alt="上传成功后渲染" style="max-width: 196px">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    var $ = layui.jquery;
+    $(document).on('click', '.button', function () {
+        var index = layer.open({
+            type: 1,
+            title: '填写表单',
+            closeBtn: 0,
+            area: ['720px', '540px'],
+            shadeClose: true,
+            content: $('#form'),
+            btn: ['确定', '取消'],
+            yes: function (index, layero) {
+                $.post("", {}, function () {
+
+                },"json");
+            },
+            cancel: function(){
+                layer.close(index);
+            }
+        });
+    });
+
+    layui.upload.render({
+        elem: '#upload',
+        url: 'https://httpbin.org/post',
+        done: function(res){
+            layer.msg('上传成功');
+            $('#uploadView').removeClass('layui-hide').find('img').attr('src', res.files.file);
+        }
+    });
+
+    window.addEventListener('mousewheel', function(event){
+        if (event.ctrlKey === true || event.metaKey) {
+            event.preventDefault();
+        }
+    },{ passive: false});
+
+    //firefox
+    window.addEventListener('DOMMouseScroll', function(event){
+        if (event.ctrlKey === true || event.metaKey) {
+            event.preventDefault();
+        }
+    },{ passive: false});
+</script>
+</html>

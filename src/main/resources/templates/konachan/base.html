@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank-translucent">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" th:href="@{/res/layui/css/layui.css}" media="all">
+    <script th:src="@{/res/layui/layui.all.js}"></script>
+    <title>Konachan 图片批量下载</title>
+</head>
+<style>
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .search {
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .console {
+        display: none;
+        width: 800px;
+        height: 400px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    #code {
+        width: 750px;
+        height: 100%;
+    }
+
+    .layui-form-item .layui-input-inline {
+        width: 280px;
+    }
+</style>
+<body>
+<blockquote class="layui-elem-quote layui-text"><H2>Konachan 图片批量下载</H2>arknights.wiki</blockquote>
+<div class="search">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+                <input type="text" id="tag" name="tag" lay-verify="title" autocomplete="off" placeholder="请输入标签"
+                       class="layui-input">
+            </div>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input type="text" id="pages" name="pages" lay-verify="title" autocomplete="off" placeholder="请输入页数"
+                       class="layui-input">
+            </div>
+            <button type="button" class="submit layui-btn layui-btn-warm">提交</button>
+        </div>
+    </form>
+</div>
+<!--<p style="text-align: center">PS：将按照默认排序开始下载，下载至指定的页数结束。</p>-->
+<div class="info">
+    <div class="console">
+        <pre id="code" class="layui-code">
+dgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfgdgdfhfgjhfgjfg
+        </pre>
+    </div>
+</div>
+</body>
+<script>
+
+    var localPointer = '';
+
+    function loop(tag, pages, pointer) {
+        $.ajax({
+            type: "post",
+            url: "/konachan/download",
+            data: {
+                tag: tag,
+                pages: pages,
+                pointer: pointer
+            },
+            dataType: "json",
+            async: false,
+            success: function (result) {
+                if(result.success){
+                    localPointer = result.pointer;
+                    $(".console").show();
+                    $("#code").append(result.console);
+                    loop(tag, pages, result.pointer);
+                } else {
+                    layer.msg(result.msg);
+                }
+            },
+            error: function () {
+                loop(tag, pages, localPointer);
+            }
+        })
+    }
+
+    var $ = layui.$;
+    $(function () {
+        $(document).on('click', '.submit', function () {
+            var tag = $("#tag").val();
+            var pages = $("#pages").val();
+            if (tag == null || tag === '' || pages == null || pages === '' || pages <= 0) {
+                layer.msg("请正确填写表单再提交！");
+            } else {
+                loop(tag, pages, localPointer);
+            }
+        });
+    });
+</script>
+</html>

@@ -26,11 +26,12 @@ public class DbTest {
     @Test
     public void testGen() {
         try {
-            String filePackage = "cc.nanjo";
-            String db = "master";
-            List<String> list = Arrays.asList("word");
-            byte[] zipByte = genComp.generatorCode(db, list, filePackage);
-            FileUtils.writeByteArrayToFile(new File("E:\\dep\\DbFiles\\" + System.currentTimeMillis() + ".zip"), zipByte);
+            String filePackage = "cc.nanjo.common.yzt";
+            List<String> list = Arrays.asList("yzt_cultural_relics");
+            byte[] zipByte = genComp.generatorCode("master", list, filePackage);
+            File path = new File("D:\\dep\\temp\\" + System.currentTimeMillis() + ".zip");
+            FileUtils.writeByteArrayToFile(path, zipByte);
+            Runtime.getRuntime().exec("explorer /select," + path.getPath());
         } catch (Exception e) {
             e.printStackTrace();
         }

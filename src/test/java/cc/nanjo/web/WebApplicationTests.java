@@ -4,8 +4,6 @@ import cc.nanjo.common.fate.calendar.BgoNewToCalendarTask;
 import cc.nanjo.common.fate.calendar.BgoNewsExecute;
 import cc.nanjo.common.fate.calendar.service.BgoNewsService;
 import cc.nanjo.common.fate.calendar.service.IcsVeventService;
-import cc.nanjo.common.tieba.TiebaSignExecute;
-import cc.nanjo.common.word.entity.ResponseEntity;
 import cc.nanjo.common.word.entity.Word;
 import cc.nanjo.common.word.service.WordExecute;
 import cc.nanjo.common.word.service.WordService;
@@ -117,17 +115,6 @@ public class WebApplicationTests {
             pinyin = pinyin.replaceAll(key, map.get(key));
         }
         return pinyin;
-    }
-
-    @Autowired
-    private WordExecute wordExecute;
-    @Autowired
-    private TiebaSignExecute tiebaSignExecute;
-
-    @Test
-    public void testController() throws Exception {
-
-        tiebaSignExecute.signingAllTieba();
     }
 
 
